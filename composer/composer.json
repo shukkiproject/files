@@ -1,0 +1,17 @@
+{
+    "name": "shukki/composer",
+    "description": "doctrine",
+    "authors": [
+        {
+            "name": "Shuk Ki",
+            "email": "shuk-ki.hertz@nantes.imie.fr"
+        }
+    ],
+    "require": {
+        "doctrine/orm": "^2.5"
+    },
+
+    "autoload": {
+        "psr-0": {"": "src/"}
+    }
+}
