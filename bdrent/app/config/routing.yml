@@ -1,0 +1,8 @@
+bd_rental:
+    resource: "@BdRentalBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

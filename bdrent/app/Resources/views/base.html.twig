@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">BD Rentals</a>
+        </div>
+        <ul class="nav navbar-nav">
+          
+          <li><a href={{ path('membre_index')}}>Membre</a></li>
+          <li><a href={{ path('bd_index')}}>All BDs</a></li>
+          <li><a href={{ path('bd_dispo')}}>BDs Dispo</a></li>
+          <li><a href={{ path('location_index')}}>Location</a></li>
+        </ul>
+      </div>
+    </nav>
+        {% block body %}{% endblock %}
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

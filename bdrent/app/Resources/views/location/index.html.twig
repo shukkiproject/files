@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Location list</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Dateretour</th>
+                <th>Membre</th>
+                <th>BDs</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for location in locations %}
+            <tr>
+                <td><a href="{{ path('location_show', { 'id': location.id }) }}">{{ location.id }}</a></td>
+                <td>{% if location.date %}{{ location.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if location.dateRetour %}{{ location.dateRetour|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if location.membre %}{{ location.membre }}{% endif %}</td>
+                
+                <td>{% if location.bds %}
+
+                    {% for bd in location.bds %}
+                    {{ bd.titre }}
+                    {% endfor %}
+                {% endif %}</td>
+
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('location_show', { 'id': location.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('location_edit', { 'id': location.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('location_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

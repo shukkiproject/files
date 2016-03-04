@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>BD list</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Dispo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bD in bDs %}
+            <tr>
+                <td><a href="{{ path('bd_show', { 'id': bD.id }) }}">{{ bD.id }}</a></td>
+                <td>{{ bD.titre }}</td>
+                <td>{{ bD.description }}</td>
+                <td>{% if bD.dispo %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('bd_show', { 'id': bD.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('bd_edit', { 'id': bD.id }) }}">edit</a>
+                        </li>
+                        <li>
+                        <a href="{{ path('location_new', { 'id': bD.id }) }}">Rent</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('bd_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

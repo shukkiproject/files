@@ -3,13 +3,11 @@
 
 
 require_once("bootstrap.php");
-require_once("src/Bug.php");
+
 
 $bug = new Bug();
 $bug-> setDescription($argv[1]);
 
-$date = new DateTime("now");
-$bug-> setCreated($date);
 $bug->setStatus($argv[2]);
 
 $productRepo = $entityManager->getRepository("Product");

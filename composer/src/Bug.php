@@ -1,7 +1,9 @@
 <?php
 // src/Bug.php
 /**
- * @Entity(repositoryClass="BugRepository") @Table(name="bugs")
+ * @Entity(repositoryClass="BugRepository") 
+ * @HasLifecycleCallbacks
+ * @Table(name="bugs")
  */
 class Bug
 {
@@ -30,7 +32,7 @@ class Bug
     */
     protected $products;
     /**
-    * @ManyToOne(targetEntity="User", inversedBy="assignedBugs")
+    * @ManyToOne(targetEntity="User", inversedBy="reportedBugs")
     */
     protected $reporter;
     /**
@@ -52,6 +54,13 @@ class Bug
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+    /** @PrePersist */
+    public function setDateTime()
+    {
+        $created = new DateTime("now");
+        $this->setCreated($created);
     }
 
     public function setCreated(DateTime $created)
