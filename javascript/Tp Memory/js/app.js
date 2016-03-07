@@ -28,11 +28,11 @@ var imgs = ['http://www.gigasmiley.com/assets/img/produit/GigaSmiley.4c4207c44e5
       tab[randPos]=temp;
     }
     // console.dir(tab);
-        
+    var img;
     for (var i = 0; i < imgs.length*2; i++) {
   		var fig= $('<figure>');
 	  	$('#board').append(fig);
-	  	var img= $('<img>');
+	  	img= $('<img>');
 	  	fig.append(img);
 		  img.attr('src', imgs[tab[i]]);
 	  	img.addClass('hide');
@@ -41,21 +41,34 @@ var imgs = ['http://www.gigasmiley.com/assets/img/produit/GigaSmiley.4c4207c44e5
 	$('img').click(changeClass);
   
   var clicked=[];
-
+  var pause;
 	function changeClass(){
-		$(this).toggleClass('hide').toggleClass('show');
-    clicked.push($(this).attr('src'));
+		$(this).toggleClass('show').toggleClass('hide');
+    clicked.push($(this));
+
+    pause=setTimeout(verify, 1500);
+
+    function verify(){
+    if (clicked.length==2){
+            console.log('2'); 
+        if (clicked[0].attr('src')==clicked[1].attr('src')) {
+            // console.log('same');  
+            var target = $('.show').each(function() {
+              $(this).addClass('good').removeClass('hide');
+              $(this).parent().css('border', '0');
+              });
+          
+        }else{
+          // console.log('not the same');
+           $('.show').each(function() {
+              $(this).delay(2000).toggleClass('hide').toggleClass('show');
+            });
+        }
+        clicked=[];
   };
-  
-  // console.log(clicked);
+  }  
 
-  if (clicked[0]===clicked[1]) {
-    console.log('same');
-    $(this).addClass('good');
-  }else{
-    $(this).toggleClass('hide').toggleClass('show');
-  }
+}
 
-  	
 
 

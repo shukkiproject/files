@@ -28,6 +28,8 @@ class LocationController extends Controller
 
         $locations = $em->getRepository('BdRentalBundle:Location')->getAllDetails();
 
+
+        
         return $this->render('location/index.html.twig', array(
             'locations' => $locations,
         ));
