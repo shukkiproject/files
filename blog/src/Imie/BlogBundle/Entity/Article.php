@@ -67,14 +67,16 @@ class Article
     /**
      * @var [categories]
      *
-     * @ORM\ManyToMany(targetEntity="Categorie", inversedBy="nom")
+     * @ORM\ManyToMany(targetEntity="Categorie" )
+     * 
      */
     private $categories;
 
     /**
      * @var image
      *
-     * @ORM\OneToOne(targetEntity="Image", inversedBy="url")
+     * @ORM\OneToOne(targetEntity="Image")
+     *     
      */
     private $image;
 

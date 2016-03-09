@@ -26,7 +26,7 @@ class ArticleController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $articles = $em->getRepository('ImieBlogBundle:Article')->findAll();
+        $articles = $em->getRepository('ImieBlogBundle:Article')->showAllByRecent();
 
         return $this->render('article/index.html.twig', array(
             'articles' => $articles,
@@ -48,6 +48,7 @@ class ArticleController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
+            $em->persist($article->getImage());
             $em->flush();
 
             return $this->redirectToRoute('article_show', array('id' => $article->getId()));
@@ -69,8 +70,15 @@ class ArticleController extends Controller
     {
         $deleteForm = $this->createDeleteForm($article);
 
+        $em = $this->getDoctrine()->getManager();
+
+        $details = $em->getRepository('ImieBlogBundle:Article')->showDetails($article->getId());
+
+        // var_dump($details);
+        
         return $this->render('article/show.html.twig', array(
             'article' => $article,
+            'details' => $details,
             'delete_form' => $deleteForm->createView(),
         ));
     }

@@ -24,7 +24,7 @@ class Categorie
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="nom", type="string")
      */
     private $nom;
 
@@ -60,6 +60,10 @@ class Categorie
      */
     public function getNom()
     {
+        return $this->nom;
+    }
+
+    public function __toString() {
         return $this->nom;
     }
 }

@@ -23,7 +23,6 @@ class Image
 
     /**
      * @var string
-     *
      * @ORM\Column(name="url", type="string", length=255)
      */
     private $url;
@@ -92,5 +91,9 @@ class Image
     public function getAlt()
     {
         return $this->alt;
+    }
+
+    public function __toString() {
+        return $this->url;
     }
 }

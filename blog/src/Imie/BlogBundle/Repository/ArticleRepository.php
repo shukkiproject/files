@@ -10,4 +10,24 @@ namespace Imie\BlogBundle\Repository;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
+		public function showAllByRecent(){
+		//order by the most recent articles
+		return $this->createQueryBuilder('art')
+		->orderBy('art.date', 'DESC')
+		->getQuery()
+		->getResult();
+	}
+		public function showDetails($id){
+		//order by the most recent articles
+		return $this->createQueryBuilder('art')
+		->where('art.id='.$id)
+		->leftJoin('art.commentaires', 'com')
+		->leftJoin('art.categories', 'cat')
+		->leftJoin('art.image', 'img')
+		->getQuery()
+		->getSingleResult();
+	}
+
+
+
 }

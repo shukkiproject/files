@@ -17,7 +17,7 @@ class CommentaireType extends AbstractType
         $builder
             ->add('auteur')
             ->add('contenu')
-            ->add('date', 'datetime')
+            
         ;
     }
     
