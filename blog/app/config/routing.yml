@@ -1,0 +1,20 @@
+imie_blog_image:
+    resource: "@ImieBlogBundle/Controller/ImageController.php"
+    type:     annotation
+
+imie_blog_commentaire:
+    resource: "@ImieBlogBundle/Controller/CommentaireController.php"
+    type:     annotation
+
+imie_blog_article:
+    resource: "@ImieBlogBundle/Controller/ArticleController.php"
+    type:     annotation
+
+imie_blog_categorie:
+    resource: "@ImieBlogBundle/Controller/CategorieController.php"
+    type:     annotation
+
+imie_blog:
+    resource: "@ImieBlogBundle/Resources/config/routing.yml"
+    prefix:   /blog
+
