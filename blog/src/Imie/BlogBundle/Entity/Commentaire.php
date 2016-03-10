@@ -165,4 +165,8 @@ class Commentaire
         $date = new \DateTime('now');
         $this->setDate($date);
     }
+
+    // public function __construct(\BF\BlogBundle\Entity\Article $article){
+    //     $this->post = $post;
+    // }
 }

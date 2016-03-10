@@ -1,10 +1,7 @@
-imie_blog_image:
-    resource: "@ImieBlogBundle/Controller/ImageController.php"
+tv:
+    resource: "@TvBundle/Controller/"
     type:     annotation
-
-imie_blog_categorie:
-    resource: "@ImieBlogBundle/Controller/CategorieController.php"
-    type:     annotation
+    prefix:   /
 
 imie_blog_image:
     resource: "@ImieBlogBundle/Controller/ImageController.php"

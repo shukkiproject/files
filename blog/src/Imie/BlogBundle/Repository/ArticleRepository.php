@@ -2,6 +2,7 @@
 
 namespace Imie\BlogBundle\Repository;
 
+
 /**
  * ArticleRepository
  *
@@ -10,14 +11,18 @@ namespace Imie\BlogBundle\Repository;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
-		public function showAllByRecent(){
+	public function showAllByRecent($start=0, $eachPage=5){
+
 		//order by the most recent articles
 		return $this->createQueryBuilder('art')
 		->orderBy('art.date', 'DESC')
+	       ->setFirstResult($start)
+	       ->setMaxResults($eachPage)		
 		->getQuery()
 		->getResult();
 	}
-		public function showDetails($id){
+	
+	public function showDetails($id){
 		//order by the most recent articles
 		return $this->createQueryBuilder('art')
 		->where('art.id='.$id)
@@ -27,6 +32,8 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
 		->getQuery()
 		->getSingleResult();
 	}
+
+
 
 
 

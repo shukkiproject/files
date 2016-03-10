@@ -21,7 +21,7 @@
             <tr>
                 <td><a href="{{ path('article_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
                 <td>{% if article.date %}{{ article.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ article.titre }}</td>
+                <td><a href="{{ path('article_show', { 'id': article.id }) }}">{{ article.titre }}</a></td>
                 <td>{{ article.auteur }}</td>
                 <td>{% if article.publication %}Yes{% else %}No{% endif %}</td>
                 <td>{{ article.contenu }}</td>
@@ -29,13 +29,7 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('article_show', { 'id': article.id }) }}">show</a>
-                        </li>
-                        <li>
                             <a href="{{ path('article_edit', { 'id': article.id }) }}">edit</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('commentaire_new', { 'article': article.id }) }}">commenter</a>
                         </li>
                     </ul>
                 </td>
@@ -47,6 +41,12 @@
     <ul>
         <li>
             <a href="{{ path('article_new') }}">Create a new entry</a>
+        </li>
+        <li>
+        {% for i in 1..nbPage %}
+        
+        <a href="{{ path('article_index', { 'page': i }) }}">Page {{ i }} </a>
+        {% endfor %}
         </li>
     </ul>
 {% endblock %}

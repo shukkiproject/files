@@ -18,22 +18,22 @@
             </div>
 
         {% block menu %}
-        <aside>
-        <menu class="menu col-md-2">
-            <ul>
-                
-            <li><a href="{{ path('article_index')}}" >Home - All Articles</a></li>
-            <li><a href="{{ path('article_new')}}" >Ajouter an article</a></li>
-            <li><a href="{{ path('categorie_index')}}" >Catégorie</a></li>
-            <li><a href="{{ path('commentaire_index')}}" >Commentaire</a></li>
-            <li><a href="{{ path('image_index')}}" >image</a></li>
-            </ul>
-        </menu>
+        <aside class="col-md-3">
+            <menu class="menu">
+                <ul>
+                    
+                <li><a href="{{ path('article_index')}}" >Home - All Articles</a></li>
+                <li><a href="{{ path('article_new')}}" >Ajouter an article</a></li>
+                <li><a href="{{ path('categorie_index')}}" >Catégorie</a></li>
+                <li><a href="{{ path('commentaire_index')}}" >Commentaire</a></li>
+                <li><a href="{{ path('image_index')}}" >image</a></li>
+                </ul>
+            </menu>
         </aside>
         {% endblock %}
-        <main class="col-md-10">
+        <main class="col-md-9">
         {% block body %}{% endblock %}
-            
+        
         </main>
         {% block javascripts %}{% endblock %}
         </div>
