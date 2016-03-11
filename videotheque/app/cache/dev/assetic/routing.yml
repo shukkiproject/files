@@ -1,0 +1,5 @@
+_assetic:
+    resource: .
+    type: assetic
+_app:
+    resource: /home/imie/public_html/git/videotheque/app/config/routing_dev.yml
