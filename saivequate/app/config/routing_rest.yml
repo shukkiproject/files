@@ -1,0 +1,4 @@
+cat:
+  type: rest
+  resource: "SavingCatsBundle:CatRest"
+  name_prefix: api_

@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cat list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Maidenname</th>
+                <th>Colours</th>
+                <th>Race</th>
+                <th>Photo</th>
+                <th>Waistsize</th>
+                <th>Earsize</th>
+                <th>Weight</th>
+                <th>Favouritecolour</th>
+                <th>Qualities</th>
+                <th>Weakness</th>
+                <th>Favouritebrand</th>
+                <th>Availability</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cat in cats %}
+            <tr>
+                <td><a href="{{ path('cat_show', { 'id': cat.id }) }}">{{ cat.id }}</a></td>
+                <td>{{ cat.maidenName }}</td>
+                <td>{{ cat.colours }}</td>
+                <td>{{ cat.race }}</td>
+                <td>{{ cat.photo }}</td>
+                <td>{{ cat.waistSize }}</td>
+                <td>{{ cat.earSize }}</td>
+                <td>{{ cat.weight }}</td>
+                <td>{{ cat.favouriteColour }}</td>
+                <td>{{ cat.qualities }}</td>
+                <td>{{ cat.weakness }}</td>
+                <td>{{ cat.favouriteBrand }}</td>
+                <td>{% if cat.availability %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('cat_show', { 'id': cat.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('cat_edit', { 'id': cat.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('cat_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

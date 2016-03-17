@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cat</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cat.id }}</td>
+            </tr>
+            <tr>
+                <th>Maidenname</th>
+                <td>{{ cat.maidenName }}</td>
+            </tr>
+            <tr>
+                <th>Colours</th>
+                <td>{{ cat.colours }}</td>
+            </tr>
+            <tr>
+                <th>Race</th>
+                <td>{{ cat.race }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ cat.photo }}</td>
+            </tr>
+            <tr>
+                <th>Waistsize</th>
+                <td>{{ cat.waistSize }}</td>
+            </tr>
+            <tr>
+                <th>Earsize</th>
+                <td>{{ cat.earSize }}</td>
+            </tr>
+            <tr>
+                <th>Weight</th>
+                <td>{{ cat.weight }}</td>
+            </tr>
+            <tr>
+                <th>Favouritecolour</th>
+                <td>{{ cat.favouriteColour }}</td>
+            </tr>
+            <tr>
+                <th>Qualities</th>
+                <td>{{ cat.qualities }}</td>
+            </tr>
+            <tr>
+                <th>Weakness</th>
+                <td>{{ cat.weakness }}</td>
+            </tr>
+            <tr>
+                <th>Favouritebrand</th>
+                <td>{{ cat.favouriteBrand }}</td>
+            </tr>
+            <tr>
+                <th>Availability</th>
+                <td>{% if cat.availability %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('cat_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('cat_edit', { 'id': cat.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
