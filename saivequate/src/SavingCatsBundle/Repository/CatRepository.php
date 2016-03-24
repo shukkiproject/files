@@ -10,4 +10,11 @@ namespace SavingCatsBundle\Repository;
  */
 class CatRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function findAllAsc(){
+
+			return $this->createQueryBuilder('cat')
+		->orderBy('cat.availability', 'ASC')
+		->getQuery()
+		->getResult();
+	}
 }

@@ -14,57 +14,56 @@ use Symfony\Component\HttpFoundation\Request;
 
 class CatRestController extends Controller
 {
-
+	//get 1 cat by name
   	public function getCatAction($maidenName){
     $cat = $this->getDoctrine()->getRepository('SavingCatsBundle:Cat')->findOneByMaidenName($maidenName);
+
 	    if(!is_object($cat)){
 	      throw $this->createNotFoundException();
 	    }
+        
     return $cat;
-    // return $this->render('SavingCatsBundle:Default:index.html.twig');
+    // return $this->render('SavingCatsBundle:cat:show.html.twig', array(
+    //         'cats' => $cats,
+        // ));
   }
-
+  	//get all cats
     public function getCatsAction(){
-        $cats = $this->getDoctrine()->getRepository('SavingCatsBundle:Cat')->findAll();
+        $cats = $this->getDoctrine()->getRepository('SavingCatsBundle:Cat')->findAllAsc();
         return $cats;
+      
     }
 
 
-  	  	//change quality2 by post (form data)
-  	// http://127.0.0.1:8000/api/cats/1
-	public function putCatAvailabilityAction($id, Request $request)
+  	//update availability
+  	// http://127.0.0.1:8000/api/cats/{id}/availability.{_format}
+	public function putCatAvailabilityAction($id)
     {       
-    		$data=$request->request->get('availability');
-
-    		// var_dump($data);
-    		// var_dump($quality2);
-    		// die;
-
     		$cat = $this->getDoctrine()->getRepository('SavingCatsBundle:Cat')->findOneById($id);
-    		$cat->setQuality2($data);
+    		$cat->setAvailability(false);
             $em = $this->getDoctrine()->getManager();
             $em->persist($cat);
             $em->flush();
             return $cat;
     }
     
-  	//change quality2 by post (form data)
-  	// http://127.0.0.1:8000/api/cats/1
-	public function putCatAction($id, Request $request)
-    {       
-    		$data=$request->request->get('quality2');
+ //  	//update quality2 by form data
+ //  	// http://127.0.0.1:8000/api/cats/1
+	// public function putCatAction($id, Request $request)
+ //    {       
+ //    		$data=$request->request->get('quality2');
 
-    		// var_dump($data);
-    		// var_dump($quality2);
-    		// die;
+ //    		// var_dump($data);
+ //    		// var_dump($quality2);
+ //    		// die;
 
-    		$cat = $this->getDoctrine()->getRepository('SavingCatsBundle:Cat')->findOneById($id);
-    		$cat->setQuality2($data);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($cat);
-            $em->flush();
-            return $cat;
-    }
+ //    		$cat = $this->getDoctrine()->getRepository('SavingCatsBundle:Cat')->findOneById($id);
+ //    		$cat->setQuality2($data);
+ //            $em = $this->getDoctrine()->getManager();
+ //            $em->persist($cat);
+ //            $em->flush();
+ //            return $cat;
+ //    }
 
     //change quality2 by post
     //http://127.0.0.1:8000/api/cats/2/qualities
