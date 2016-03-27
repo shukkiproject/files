@@ -1,7 +1,7 @@
-tv:
-    resource: "@TvBundle/Controller/"
-    type:     annotation
-    prefix:   /
+# tv:
+#     resource: "@TvBundle/Controller/"
+#     type:     annotation
+#     prefix:   /
 
 imie_blog_image:
     resource: "@ImieBlogBundle/Controller/ImageController.php"
@@ -23,3 +23,5 @@ imie_blog:
     resource: "@ImieBlogBundle/Resources/config/routing.yml"
     prefix:   /
 
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
