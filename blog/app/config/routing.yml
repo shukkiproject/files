@@ -1,7 +1,11 @@
-# tv:
-#     resource: "@TvBundle/Controller/"
-#     type:     annotation
-#     prefix:   /
+imie_blog:
+    resource: "@ImieBlogBundle/Controller/BlogController.php"
+    type:     annotation
+    prefix:   /
+
+tv:
+    resource: "@TvBundle/Controller/DefaultController.php"
+    type:     annotation
 
 imie_blog_image:
     resource: "@ImieBlogBundle/Controller/ImageController.php"
@@ -18,10 +22,6 @@ imie_blog_article:
 imie_blog_categorie:
     resource: "@ImieBlogBundle/Controller/CategorieController.php"
     type:     annotation
-
-imie_blog:
-    resource: "@ImieBlogBundle/Resources/config/routing.yml"
-    prefix:   /
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

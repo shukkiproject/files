@@ -13,12 +13,48 @@
     <body>
         <div class="container">
              
-        {% block header %}<div class="text-center">
-        <a href="{{ path('article_index')}}" ><img src="{{ asset('bundles/framework/images/blog.jpg')}}" alt=""></a>{% endblock %}
-            </div>
 
         {% block menu %}
-        <aside class="col-md-3">
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">Blog</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="">Articles
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ path('article_index')}}" >All articles</a></li>
+                   <li><a href="{{ path('article_new')}}" >Ajouter an article</a></li>
+                </ul>
+              </li>
+                <li><a href="{{ path('categorie_index')}}" >Catégorie</a></li>
+                <li><a href="{{ path('commentaire_index')}}" >Commentaire</a></li>
+                <li><a href="{{ path('image_index')}}" >image</a></li>  
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="">Profile
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ path('fos_user_profile_show')}}" >Profile</a></li>
+                   <li><a href="{{ path('fos_user_resetting_request')}}" >Reset</a></li>
+                </ul>
+              </li>
+              <li><a href="{{ path('fos_user_registration_register')}}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <a href="{{ path('fos_user_security_logout')}}"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                {% else %}
+                    <a href="{{ path('fos_user_security_login')}}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                {% endif %}
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <!-- <aside class="col-md-3">
             <menu class="menu">
                 <ul>
                     
@@ -27,16 +63,36 @@
                 <li><a href="{{ path('categorie_index')}}" >Catégorie</a></li>
                 <li><a href="{{ path('commentaire_index')}}" >Commentaire</a></li>
                 <li><a href="{{ path('image_index')}}" >image</a></li>
-                <li><a href="{{ path('fos_user_security_login')}}" >login</a></li>
+                
                 </ul>
             </menu>
-        </aside>
+        </aside> -->
         {% endblock %}
-        <main class="col-md-9">
+
+        {% block header %}
+        <div class="text-center">
+        <a href="{{ path('article_index')}}" ><img src="{{ asset('bundles/framework/images/blog.jpg')}}" alt=""></a></div>
+         
+        {% if is_granted('ROLE_SUPER_ADMIN') %}    
+        <a href="">SUPER ADMIN ONLY</a> 
+        {% endif %}
+
+        {% if is_granted('ROLE_ADMIN') %}    
+        <a href="">ADMIN ONLY</a> 
+        {% endif %}
+
+        {% endblock %}
+
+        <main class="col-md-12">
         {% block body %}{% endblock %}
         
         </main>
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+            
+            <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        {% endblock %}
         </div>
     </body>
 </html>

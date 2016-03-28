@@ -87,7 +87,7 @@ class ArticleController extends Controller
     /**
      * Finds and displays a Article entity.
      *
-     * @Route("/{id}", name="article_show")
+     * @Route("/{id}", defaults={"id" = 1}, name="article_show")
      * @Method({"GET", "POST"})
      */
     public function showAction(Article $article, Request $request)
