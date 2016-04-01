@@ -35,7 +35,7 @@ class User extends BaseUser
 
     /**
      * @var string
-     *
+     * @ORM\OneToMany(targetEntity="LikingComment", inversedBy="user")
      * 
      */
     private $likingComment;
