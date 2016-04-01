@@ -1,5 +1,14 @@
 {% extends 'layout.html.twig' %}
 
+
+        {% block page %}
+        {% for i in 1..nbPage %}
+                
+                <li><a href="{{ path('article_index', { 'page': i }) }}">Page {{ i }} </a></li>
+        {% endfor %}
+        {% endblock %}
+   
+
 {% block body %}
     <h1>Article list</h1>
 

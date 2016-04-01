@@ -1,3 +1,8 @@
+# site:
+#     resource: "@SiteBundle/Controller/"
+#     type:     annotation
+#     prefix:   /
+
 imie_blog:
     resource: "@ImieBlogBundle/Controller/BlogController.php"
     type:     annotation

@@ -28,6 +28,8 @@
                 <ul class="dropdown-menu">
                     <li><a href="{{ path('article_index')}}" >All articles</a></li>
                    <li><a href="{{ path('article_new')}}" >Ajouter an article</a></li>
+                   {% block page %}
+                    {% endblock %}
                 </ul>
               </li>
                 <li><a href="{{ path('categorie_index')}}" >Catégorie</a></li>
@@ -41,6 +43,8 @@
                 <ul class="dropdown-menu">
                     <li><a href="{{ path('fos_user_profile_show')}}" >Profile</a></li>
                    <li><a href="{{ path('fos_user_resetting_request')}}" >Reset</a></li>
+                          
+                           
                 </ul>
               </li>
               <li><a href="{{ path('fos_user_registration_register')}}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -81,10 +85,26 @@
         <a href="">ADMIN ONLY</a> 
         {% endif %}
 
+        {% if app.request.hasPreviousSession %}
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="flash-{{ type }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
         {% endblock %}
 
         <main class="col-md-12">
-        {% block body %}{% endblock %}
+        
+
+
+        {% block body %}
+            {% block fos_user_content %}
+            {% endblock %}
+        {% endblock %}
         
         </main>
         {% block javascripts %}

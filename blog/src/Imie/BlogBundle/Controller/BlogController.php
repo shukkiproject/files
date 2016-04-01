@@ -44,8 +44,13 @@ class BlogController extends Controller
     public function adminUsersAction()
     {
         $this->denyAccessUnlessGranted('ROLE_SUPER_ADMIN', null, 'Unable to access this super admin page!');
+        $userManager = $this->get('fos_user.user_manager');
+        $users=$userManager->findUsers();
+
+        return $this->render('ImieBlogBundle:Blog:admin.html.twig', array('users' => $users,));
         
-        return new Response('<html><body>Admin Users page!</body></html>');
+        
+        // return new Response('<html><body>Admin Users page!</body></html>');
     }
 
 }
