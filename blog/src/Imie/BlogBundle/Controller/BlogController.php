@@ -6,6 +6,7 @@ namespace Imie\BlogBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Blog controller.
@@ -15,10 +16,14 @@ use Symfony\Component\HttpFoundation\Response;
 class BlogController extends Controller
 {
     
-    /**
-     * @Route("/")
+    
+   /**
+     * @Route("/{_locale}", defaults={"_locale": "en"}, requirements={
+     *     "_locale": "en|fr"
+     * })
      */
-    public function indexAction(){    
+    public function indexAction(Request $request){
+        $locale = $request->getLocale();    
         $response = $this->forward('ImieBlogBundle:Article:index', array('page'=> '1'));
         return $response; 
     } 
@@ -52,5 +57,7 @@ class BlogController extends Controller
         
         // return new Response('<html><body>Admin Users page!</body></html>');
     }
+
+
 
 }

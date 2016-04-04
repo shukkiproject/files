@@ -8,25 +8,44 @@ imie_blog:
     type:     annotation
     prefix:   /
 
+
 tv:
     resource: "@TvBundle/Controller/DefaultController.php"
     type:     annotation
+    prefix:   /{_locale}/
+    requirements:
+        _locale: en|fr
 
 imie_blog_image:
     resource: "@ImieBlogBundle/Controller/ImageController.php"
-    type:     annotation
+    type:     annotation    
+    prefix:   /{_locale}/
+    requirements:
+        _locale: en|fr
 
 imie_blog_commentaire:
     resource: "@ImieBlogBundle/Controller/CommentaireController.php"
     type:     annotation
+    prefix:   /{_locale}/
+    requirements:
+        _locale: en|fr
 
 imie_blog_article:
     resource: "@ImieBlogBundle/Controller/ArticleController.php"
     type:     annotation
+    prefix:   /{_locale}/
+    requirements:
+        _locale: en|fr
 
 imie_blog_categorie:
     resource: "@ImieBlogBundle/Controller/CategorieController.php"
     type:     annotation
+    prefix:   /{_locale}/
+    requirements:
+        _locale: en|fr
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    prefix:   /{_locale}/
+    requirements:
+        _locale: en|fr
