@@ -20,7 +20,7 @@ class User extends BaseUser
 
     /**
      * @var string
-     * @ORM\OneToMany(targetEntity="Comment", inversedBy="user")
+     * @ORM\OneToMany(targetEntity="SeriesComment", inversedBy="comment")
      * 
      */
     private $comments;
@@ -35,10 +35,17 @@ class User extends BaseUser
 
     /**
      * @var string
-     * @ORM\OneToMany(targetEntity="LikingComment", inversedBy="user")
+     * @ORM\OneToMany(targetEntity="SeriesComment", mappedBy="likedBy")
      * 
      */
-    private $likingComment;
+    private $seriesCommentLiked;
+
+    /**
+     * @var string
+     * @ORM\OneToMany(targetEntity="SeriesComment", mappedBy="dislikedBy")
+     * 
+     */
+    private $seriesCommentDisliked;
 
     /**
      * @var string

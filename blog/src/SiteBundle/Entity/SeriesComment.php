@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Comment
  *
- * @ORM\Table(name="comment")
- * @ORM\Entity(repositoryClass="SiteBundle\Repository\CommentRepository")
+ * @ORM\Table(name="comment_series")
+ * @ORM\Entity(repositoryClass="SiteBundle\Repository\CommentSeriesRepository")
  */
 class Comment
 {
@@ -39,6 +39,7 @@ class Comment
      * @var string
      *
      *
+      @ORM\OneToMany(targetEntity="SeriesComment", inversedBy="comment")
      * 
      */
     private $comment;
@@ -46,9 +47,16 @@ class Comment
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="LikingComment", inversedBy="comment")
+     * @ORM\OneToMany(targetEntity="User", inversedBy="likedSeriesComment")
      */
-    private $likings;
+    private $likedBy;
+
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="User", inversedBy="dislikedSeriesComment")
+     */
+    private $dislikedBy;
 
     /**
      * @var string
