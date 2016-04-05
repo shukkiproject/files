@@ -24,7 +24,7 @@ class Comment
     /**
      * @var string
      *
-     *  @ORM\ManyToOne(targetEntity="User", mappedBy="comments")
+     *  @ORM\ManyToOne(targetEntity="User", mappedBy="seriesComments")
      */
     private $user;
 
@@ -39,7 +39,6 @@ class Comment
      * @var string
      *
      *
-      @ORM\OneToMany(targetEntity="SeriesComment", inversedBy="comment")
      * 
      */
     private $comment;

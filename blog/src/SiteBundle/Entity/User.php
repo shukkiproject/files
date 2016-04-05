@@ -20,11 +20,17 @@ class User extends BaseUser
 
     /**
      * @var string
-     * @ORM\OneToMany(targetEntity="SeriesComment", inversedBy="comment")
+     * @ORM\OneToMany(targetEntity="SeriesComment", inversedBy="user")
      * 
      */
-    private $comments;
+    private $seriesComments;
 
+    /**
+     * @var string
+     * @ORM\OneToMany(targetEntity="EpisodeComment", inversedBy="user")
+     * 
+     */
+    private $episodeComments;
 
     /**
      * @var string
