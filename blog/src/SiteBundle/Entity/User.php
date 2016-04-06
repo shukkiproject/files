@@ -20,38 +20,31 @@ class User extends BaseUser
 
     /**
      * @var string
-     * @ORM\OneToMany(targetEntity="SeriesComment", inversedBy="user")
+     * @ORM\OneToMany(targetEntity="CommentTv", mappedBy="user")
      * 
      */
-    private $seriesComments;
+    private $comments;
 
     /**
      * @var string
-     * @ORM\OneToMany(targetEntity="EpisodeComment", inversedBy="user")
+     * @ORM\ManyToMany(targetEntity="Series", mappedBy="ratings")
      * 
      */
-    private $episodeComments;
+    private $seriesRatings;
 
     /**
      * @var string
-     * @ORM\OneToMany(targetEntity="RatingSeries", inversedBy="user")
-     * 
+     * @ORM\ManyToMany(targetEntity="CommentTv", mappedBy="likedBy")
+     * @JoinTable(name="users_comments_liked")
      */
-    private $ratingsSeries;
+    private $commentsLiked;
 
     /**
      * @var string
-     * @ORM\OneToMany(targetEntity="SeriesComment", mappedBy="likedBy")
-     * 
+     * @ORM\ManyToMany(targetEntity="CommentTv", mappedBy="dislikedBy")
+     * @JoinTable(name="users_comments_disliked")
      */
-    private $seriesCommentLiked;
-
-    /**
-     * @var string
-     * @ORM\OneToMany(targetEntity="SeriesComment", mappedBy="dislikedBy")
-     * 
-     */
-    private $seriesCommentDisliked;
+    private $commentsDisliked;
 
     /**
      * @var string
@@ -62,17 +55,24 @@ class User extends BaseUser
 
     /**
      * @var string
-     *
+     * @ORM\ManyToMany(targetEntity="Episode", inversedBy="viewedBy")
      * 
      */
-    private $episodeViewed;
+    private $episodesViewed;
 
     /**
      * @var string
-     *
+     * @ORM\Column(name="notifications", type="text", length=255)
      * 
      */
     private $notifications;
+
+    /**
+     * @var boolean
+     * @ORM\Column(name="flagged", type="text", length=255)
+     * 
+     */
+    private $flagged;
 
     public function __construct()
     {

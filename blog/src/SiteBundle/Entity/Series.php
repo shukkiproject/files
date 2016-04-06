@@ -31,14 +31,14 @@ class Series
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="Episode", inversedBy="series")
+     * @ORM\OneToMany(targetEntity="Episode", mappedBy="series")
      */
     private $episodes;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="synopsis", type="string", length=255)
+     * @ORM\Column(name="synopsis", type="text", length=255)
      */
     private $synopsis;
 
@@ -59,14 +59,7 @@ class Series
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="Comment", inversedBy="series")
-     */
-    private $comments;
-
-    /**
-     * @var string
-     *
-     * @ORM\OneToMany(targetEntity="RatingSeries", inversedBy="series")
+     * @ORM\ManyToMany(targetEntity="User", inversedBy="seriesRatings")
      */
     private $ratings;
 
@@ -78,18 +71,25 @@ class Series
     private $followedBy;
 
     /**
-     * @var string
+     * @var boolean
      *
      * 
      */
     private $validated;
 
     /**
-     * @var string
+     * @var int
      *
      * 
      */
     private $oldId;
+
+    /**
+     * @var boolean
+     *
+     * 
+     */
+    private $flagged;
 
 
     /**

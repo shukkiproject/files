@@ -24,23 +24,45 @@ class Episode
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="Series", mappedBy="episodes")
+     * @ORM\ManyToOne(targetEntity="Series", inversedBy="episodes")
      */
     private $series;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="season", type="string", length=255)
+     * @ORM\Column(name="season", type="integer")
      */
     private $season;
 
     /**
-     * @var string
+     * @var text
      *
-     * @ORM\Column(name="synopsis", type="string", length=255)
+     * @ORM\Column(name="synopsis", type="text", length=255)
      */
     private $synopsis;
+
+    /**
+     * @var string
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="episodesViewed")
+     * 
+     */
+    private $viewedBy;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="CommentTv", mappedBy="episode")
+     */
+    private $comments;
+
+    /**
+     * @var boolean
+     *
+     * 
+     */
+    private $flagged;
 
 
     /**
