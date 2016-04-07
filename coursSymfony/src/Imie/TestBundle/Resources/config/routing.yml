@@ -1,5 +1,0 @@
-imie_yaourt:
-    path: /yaourt/{categorie}
-    defaults: { _controller: ImieTestBundle:Yaourt:index, categorie: 1}
-    requirements:
-        categorie: \d+

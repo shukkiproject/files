@@ -1,4 +1,0 @@
-imie_test:
-    resource: "@ImieTestBundle/Resources/config/routing.yml"
-    prefix:   /
-

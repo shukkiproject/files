@@ -1,4 +1,0 @@
-services:
-#    imie_test.example:
-#        class: Imie\TestBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
