@@ -52,15 +52,3 @@ FieldView.prototype._drawIrrigate = function(){
   var tankWater = this._model.getTankWater();
   this._tankWater.innerHTML = tankWater;
 };
-
-// // Set minute to model value
-// GameView.prototype._drawGlobalWater = function(){
-//   var globalWater = this._model.getGlobalWater();
-//   this._globalWater.innerHTML = globalWater;
-// };
-
-// // Set second to model value
-// GameView.prototype._drawMoney = function(){
-//   var money = this._model.getMoney();
-//   this._money.innerHTML = money;
-// };

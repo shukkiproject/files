@@ -14,8 +14,7 @@ GameView.prototype.constructor = GameView;
 
 //init is equal to go
 GameView.prototype._init = function(){
-  // les buttons.....
-  //field
+
   this._redraw();
 };
 

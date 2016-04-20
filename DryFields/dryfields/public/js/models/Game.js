@@ -3,9 +3,8 @@ function Game() {
   this.harvest=0;
   this.globalWater=3;
   this.money=50;
-  // this.harvestPrice=40;
-  // this.currentStock;
-  // this.currentPrice=1;
+  this.currentStock=10000;
+  this.currentPrice=1;
   this.field;
 };
 
@@ -46,17 +45,25 @@ Game.prototype.setMoney = function(price, quantity) {
     return this;
 };
 
-Game.prototype.buyWater = function(price, quantity) {
-    this.money-=(price*quantity);
+Game.prototype.setCurrentStock = function(quantity) {
+    this.currentStock-=quantity;
+    return this;
+};
+
+Game.prototype.buy = function(quantity) {
+    this.money-=(this.currentPrice*quantity);
+    this.globaWater+=quantity;
+    
     this.emit('moneyChange');
     return this;
 };
 
 Game.prototype.buyGlobalWater = function(quantity) {
-    this.globaWater+=quantity;
+    
     this.emit('buyGlobalWater');
     return this;
 };
+
 // Game.prototype.updateHarvest = function() {
 //   if (maturity==20) {
 //     //when clicked in view

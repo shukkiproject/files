@@ -5,14 +5,14 @@ var field = new Field();
 
 // Views
 var gameView = new GameView(game);
-// var buyView = new BuyView();
+var buyView = new BuyView();
 var fieldView = new FieldView(field);
 
 // // Controllers
 var fieldCtrl = new FieldController(field, fieldView);
   // console.log('test');
 
-var gameCtrl = new GameController(game, gameView);
+var gameCtrl = new GameController(game, gameView, buyView);
 
 
 

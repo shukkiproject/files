@@ -5,7 +5,7 @@ function Field() {
   this.game;
   // this.consumptionLv=1;
   // this.maturity=false;
-  // this.maturityLv=0;
+  this.maturityLv=0;
   // this.consumptionWater=true;
 };
 
