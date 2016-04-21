@@ -34,16 +34,12 @@ FieldView.prototype._getElements = function(){
 // What must I do when model changes?
 FieldView.prototype._bindActions = function(){
   this._model.on('tankWaterChange', this._drawIrrigate.bind(this));
-  // this._model.on('globalWaterChange', this._drawGlobalWater.bind(this));
-  // this._model.on('moneyChange', this._drawMoney.bind(this));
 };
 
 // Redraw the clock
 FieldView.prototype._redraw = function(){
 
   this._drawIrrigate();
-  // this._drawGlobalWater();
-  // this._drawMoney();
 
 };
 

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Observer</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script type="text/javascript" src="observable.js"></script>
+    <script type="text/javascript" src="observer.js"></script>
+    <script type="text/javascript" src="clock.observer.js"></script>
+    <script type="text/javascript" src="buttons.observable.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+
+  </head>
+  <body>
+  <div class="container">
+      <div class="jumbotron">
+      
+        <div id="clock">
+        </div>
+    
+        <div id='buttons'>
+          
+       
+          
+          <button class="h-plus">+</button>
+          <button class="h-moins">-</button>
+          <button class="m-plus">+</button>
+          <button class="m-moins">-</button>
+          <button class="s-plus">+</button>
+          <button class="s-moins">-</button>
+
+        </div>
+
+    </div>
+  </div>
+    <script type="text/javascript">
+      // var hh = '00',
+      //     mm = '58',
+      //     ss = '58';
+
+
+      // function second() {
+      //   if (ss < 59) {
+      //     ss++;
+      //     if (ss < 10) {
+      //       ss = '0'+ss;
+      //     }
+      //   }
+      //   else {
+      //     ss = '00';
+      //     minute();
+      //   }
+      //   $('.clock').text(hh+':'+mm+':'+ss);
+      // }
+      // function minute() {
+      //   if (mm < 59) {
+      //     mm++;
+      //     if (mm < 10) {
+      //       mm = '0'+mm;
+      //     }
+      //   }
+      //   else {
+      //     mm = '00';
+      //     heure();
+      //   }
+      //   $('.clock').text(hh+':'+mm+':'+ss);
+      // }
+      // function heure() {
+      //   if (hh < 23) { 
+      //     hh++; 
+      //     if (mm < 10) {
+      //       mm = '0'+mm;
+      //     }
+      //   }
+      //   else {
+      //     hh = '00';
+      //   }
+      //   $('.clock').text(hh+':'+mm+':'+ss);
+      // }
+      // //demarrage de minute
+      // setInterval(second, 1000);
+
+      // $('.clock').text(hh+':'+mm+':'+ss);
+
+    </script>
+  </body>
+</html>

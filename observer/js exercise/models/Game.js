@@ -5,14 +5,14 @@ function Game() {
   this.money=50;
   this.currentStock=10000;
   this.currentPrice=1;
-  this.field;
+  this.fields=[];
 };
 
 Game.prototype = Object.create(EventEmitter.prototype);
 Game.prototype.constructor = Game;
 
 Game.prototype.addField = function(field) {
-    this.field=field;
+    this.fields.push(field);
 };
 
 Game.prototype.getHarvest = function() {
@@ -39,7 +39,7 @@ Game.prototype.setGlobalWater = function() {
     return this;
 };
 
-Game.prototype.setMoney = function(price, quantity) {
+Game.prototype.setMoney = function() {
     this.money+=40;
     this.emit('moneyChange');
     return this;
@@ -52,30 +52,12 @@ Game.prototype.setCurrentStock = function(quantity) {
 
 Game.prototype.buy = function(quantity) {
     this.money-=(this.currentPrice*quantity);
+    this.currentStock-=quantity;
     this.globaWater+=quantity;
-    
+    this.emit('globalWaterChange');
     this.emit('moneyChange');
     return this;
 };
-
-Game.prototype.buyGlobalWater = function(quantity) {
-    
-    this.emit('buyGlobalWater');
-    return this;
-};
-
-// Game.prototype.updateHarvest = function() {
-//   if (maturity==20) {
-//     //when clicked in view
-//     harvest++;
-//     this.money+=40;
-//   }
-// };
-
-// Game.prototype.updateStock = function(quantity) {
-//     this.currentStock-=quantity;
-//     return this.currentStock;
-// };
 
 // this.getStock = function() {
 //     $ajax({

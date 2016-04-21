@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Biche light</title>
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/flatly/bootstrap.min.css" />
+  <style type="text/css">
+     .circle{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: gray;
+      }
+  </style>
+  <script src="http://code.jquery.com/jquery-2.2.1.js"></script>
+</head>
+<body>
+  <div id="trafficLight" class="col-md-6">
+
+  </div>
+
+  <div id="bicheLight" class="col-md-6">
+
+  </div>
+ 
+
+  <script src="./js/libs/EventEmitter.js"></script>
+ <!--  <script src="./js/controllers/LightController.js"></script> -->
+  <script src="./js/views/LightView.js"></script>
+ 
+<!--   <script src="./js/models/TrafficLight.js"></script>
+  <script src="./js/models/BicheLight.js"></script> -->
+  <script src="./js/app.js"></script>
+  <script>
+
+  start();
+
+  function start(){
+
+  green();
+  setTimeout(orange, 3000);
+  setTimeout(red, 6000);
+  setTimeout(greenStill, 28000);
+  }
+
+  function green(){
+      $('#r-t').css('background', 'gray').css('opacity', 1);;
+      $('#g-t').css('background', 'green').animate({opacity:0.5},3000);
+  }
+
+  function greenStill(){
+      $('#r-t').css('background', 'gray').css('opacity', 1);;
+      $('#g-t').css('background', 'green');
+  }
+
+  function orange(){
+    $('#g-t').css('background', 'gray').css('opacity', 1);
+    $('#o-t').css('background', 'orange').animate({opacity:0.5},3000);
+  }
+
+  function red(){
+    $('#o-t').css('background', 'gray').css('opacity', 1);
+    $('#r-t').css('background', 'red').animate({opacity:0.5},3000);
+  }
+  
+  
+
+  var flash=flashing();
+  setTimeout(stop, 6000);
+
+  function flashing(){
+
+    redFlash();
+    var a=setInterval(redStill, 1000);
+    var b=setInterval(redFlash, 1500);
+  };
+
+  function stop() {
+    clearInterval(flash);
+  }
+  
+  function redFlash(){
+      $('#r-b').css('background', 'red').animate({opacity:0.5},1000);
+  }
+
+  function redStill(){
+      $('#r-b').css('opacity', 1);
+  }
+
+  </script>
+</body>
+</html>

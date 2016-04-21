@@ -5,14 +5,13 @@ function GameController(model, gameView, buyView){ //initialisations de notre co
 };
 
 GameController.prototype._bindActions = function(){
-  this._buyView.on('quantity', this._quantity.bind(this));
   this._buyView.on('buy', this._buy.bind(this));
 };
 
-GameController.prototype._quantity = function(quantity){
-  this._model.setCurrentStock(quantity);
+GameController.prototype._quantity = function(){
+
 };
 
-GameController.prototype._buy = function(){
-  this._model.buy();
+GameController.prototype._buy = function(quantity){
+  this._model.buy(quantity);
 };

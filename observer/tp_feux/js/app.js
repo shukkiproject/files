@@ -1,0 +1,2 @@
+
+var lightView = new LightView();

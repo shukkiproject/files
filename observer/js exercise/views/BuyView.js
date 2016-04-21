@@ -20,11 +20,10 @@ BuyView.prototype.init = function(){
 
 // DOM Buttons listeners
 BuyView.prototype.bindListeners = function(){
-  this._quantityElement.on('click', function(e){
-    this.emit('quantity');
-  }.bind(this));
+
   this._buyElement.on('click', function(e){
-    this.emit('buy');
+    this.emit('buy', {'amount': $('#quantity').val()});
+    console.log(this);
   }.bind(this));
 
 };

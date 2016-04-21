@@ -3,7 +3,7 @@ function GameView(model){
   this._model = model;
   // All the DOM elements to get
   this._elements = ['harvest', 'globalWater', 'money'];
-  this._clickElements = ['go', 'buyWater'];
+  this._clickElements = ['go'];
   this._getElements();
   this._init();
   this._bindActions();
