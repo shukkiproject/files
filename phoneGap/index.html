@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<!-- correct display for the mobile -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>jQuery Mobile</title>
+	<!-- it's better to put on top to evit the transformation at the end -->
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script>
+	// chrome error fix // to delete before prod!!
+		$(document).bind('mobileinit', function(){
+			$.mobile.pushStateEnabled = false;
+		});
+	</script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+<body>
+	<!-- homepage -->
+	<div data-role="page" id="home">
+		<aside data-role="panel" id="panel" data-display="overlay" data-theme="b">
+			<div class="ui-content">
+				
+			panel
+			<a href="#" data-rel="close" class="ui-btn">Fermer</a>
+			</div>
+		</aside>
+
+		<div data-role="header"><h1>Accueil</h1></div>
+		<div role="main" class="ui-content">contenu page 1
+		<p>para 1</p>
+		<p>para 2</p>
+		<p>para 3</p>
+		<p>para 4</p>
+		<div data-role="controlgroup" data-type="horizontal">
+			<a href="#" class="ui-btn" class="createListView">create a list</a>
+				<ul id="content" data-role='listview' >
+					<li></li>
+				</ul>
+			<a href="#page2" data-transition="slide" class="ui-btn">Page 2</a>
+			<a href="#warning" data-transition="fade" class="ui-btn">Warning</a>
+			<a href="#chaton" data-rel="popup" class="ui-btn" data-transition="flow" data-position-to="window">chaton...</a>
+			<a href="#panel" data-transition="fade" class="ui-btn">panel</a>
+		</div>
+		<div data-role="collapsible">
+			<h1>Cliquez-moi!</h1>
+
+
+			<div class="ui-grid-b">
+				<div class="ui-block-a">A</div>
+				<div class="ui-block-b">B</div>
+				<div class="ui-block-c">C</div>
+				<div class="ui-block-a">D</div>
+				<div class="ui-block-b">E</div>
+				<div class="ui-block-c">F</div>
+			</div>
+		</div>
+
+		<form>
+			<label for="nom">Nom:</label>
+			<input 
+			type="text" name="nom" id="nom" placeholder="Nom..."/>
+		</form>
+
+		</div>
+
+		<div data-role="popup" id="chaton" >
+		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right">Fermer</a>
+			<img src="http://static.polytrans.fr/media/152_groupe_chaton__059927200_1119_30012014.jpg"/>
+		<!-- data-transition="pop" -->
+		</div>
+		
+		
+
+		<footer data-role="footer" data-position="fixed">
+		<h5>Footer</h5>
+		<div data-role="navbar">
+		    <ul>
+		        <li><a href="#" class="ui-btn-active">One</a></li>
+		        <li><a href="#">Two</a></li>
+		        <li><a href="#">Three</a></li>
+		    </ul>
+		</div><!-- /navbar -->
+		</footer>
+	</div>
+	<!-- Page 2 -->
+
+	</div>
+
+	<div data-role="page" id="page2">
+
+		<div data-role="header" data-add-back-btn="true" data-back-btn-text="Retour">
+			<!-- example return
+			<a href="#" class="ui-btn ui-icon-home ui-btn-icon-left ui-shadow ui-corner-all" data-rel="back">Retour</a> -->
+			<h1>Page 2</h1>
+		</div>
+		<div role="main" class="ui-content">contenu page 2
+		<!-- data-transition="pop" -->
+		<!-- <div id="content">
+			
+		</div> -->
+		<!-- example return
+		<a href="#home" data-transition="slide" data-direction="reverse" class="ui-btn">Accueil</a> -->
+		</div>
+		<div data-role="footer" data-position="fixed"><h5>Footer page 2</h5></div>
+	</div>
+
+	<div data-role="page" id="warning" data-dialog="true">
+		<div data-role="header"><h1>supprimer?</h1></div>
+		<div role="main" class="ui-content">vous etes sur?
+		<!-- data-transition="pop" -->
+		</div>
+	</div>
+<!-- 	<div id="test" data-toto="TOTO"></div>
+	<div id="plop" data-id="2"></div> -->
+	<script>
+	var home = $('#home');
+	// home.on('pagecreate', function(e){
+	// 	home.find('p').on('taphold', function(e){
+	// 		$(e.currentTarget).remove();
+	// 	});
+	// });
+
+	// marche pas 
+	// var div = $('#content');
+	$("#page2").on('pagebeforeshow', function(e){
+		div.empty();
+		div.append('<p>' + Math.floor(Math.random()*6+1) + '</p>');
+	});
+
+	home.on('swipeleft', function(e){
+		$.mobile.navigate('#page2');
+	});
+
+	home.on('swiperight', function(e){
+		$('#panel').panel('open');
+	});
+
+	var btn=$('#createListview');
+	var div = $('#content');
+
+	btn.on('click', fucntion(e){
+		var li = $('<li>Gabriel</li>');
+
+		content.append(li);
+		content.listview('refresh');
+
+		li.on('click', function(e){
+			$(e.currentTarget).remove();
+		});
+	});
+		//traditional way to get the div
+		//data- will add data in the dataset
+		// var div = document.getElementById('plop');
+		// console.dir(div);
+		// console.dir(div.dataset);
+
+		//jquery
+		// var div = $('#test');
+		// console.log(div.data());
+
+		//div.dataset.toto = "tata"; javascript
+		// div.data('toto', 'tata'); //jQuery 1 value getter, 2 value setter
+		// console.log(div.data());
+
+
+	</script>
+</body>
+</html>
